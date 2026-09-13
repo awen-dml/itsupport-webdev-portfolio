@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Awen — IT Support &amp; Web Developer</title>
+<meta name="description" content="Portfolio Awen, IT Support &amp; Web Developer dari Kendari, dengan pengalaman dalam technical support, hardware, networking, PHP, Laravel, dan business web applications.">
+<link rel="canonical" href="https://YOUR_DOMAIN/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Awen — IT Support &amp; Web Developer">
+<meta property="og:title" content="Awen — IT Support &amp; Web Developer">
+<meta property="og:description" content="Membantu bisnis dan organisasi menyelesaikan masalah IT, membangun aplikasi web, dan menjaga sistem digital tetap berjalan.">
+<meta property="og:url" content="https://YOUR_DOMAIN/">
+<meta property="og:image" content="https://YOUR_DOMAIN/assets/img/og-cover.jpg">
+<meta property="og:locale" content="id_ID">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Awen — IT Support &amp; Web Developer">
+<meta name="twitter:description" content="IT Support, networking, hardware, dan web development (PHP/Laravel) dari Kendari, Indonesia.">
+<meta name="twitter:image" content="https://YOUR_DOMAIN/assets/img/og-cover.jpg">
+
+<meta name="theme-color" content="#111316">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317191c'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23e39a4d' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<script>
+  /* Set tema & flag JS sebelum render untuk menghindari flash */
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try {
+      var t = localStorage.getItem('awen-theme');
+      if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<link rel="stylesheet" href="assets/css/style.css">
+<script defer src="assets/js/script.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Lompat ke konten utama</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="#home" aria-label="Awen — kembali ke atas">
+      <span class="brand__mark" aria-hidden="true">A</span>
+      <span class="brand__text">AWEN</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Buka menu navigasi">
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav nav--primary" id="primary-nav" aria-label="Navigasi utama">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#services">Services</a></li>
+        <li><a class="nav__link" href="#portfolio">Portfolio</a></li>
+        <li><a class="nav__link" href="#experience">Experience</a></li>
+        <li><a class="nav__link" href="#blog">Blog</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Aktifkan tema gelap">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+
+      <div class="hero__content">
+        <p class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          Kendari, Indonesia — Available for work
+        </p>
+
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__name">AWEN</span>
+          <span class="hero__role">IT Support &amp; Web Developer</span>
+        </h1>
+
+        <p class="hero__lead">
+          Membantu bisnis dan organisasi menyelesaikan masalah IT, membangun aplikasi web,
+          dan menjaga sistem digital tetap berjalan.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">Hubungi Saya</a>
+          <a class="btn btn--ghost" href="#portfolio">Lihat Portfolio</a>
+        </div>
+
+        <ul class="chips chips--hero" aria-label="Bidang keahlian utama">
+          <li class="chip">IT Support</li>
+          <li class="chip">PHP / Laravel</li>
+          <li class="chip">Hardware</li>
+          <li class="chip">Network</li>
+        </ul>
+      </div>
+
+      <div class="hero__visual">
+        <div class="terminal" aria-hidden="true">
+          <div class="terminal__bar">
+            <span class="terminal__dot"></span>
+            <span class="terminal__dot"></span>
+            <span class="terminal__dot"></span>
+            <span class="terminal__title">awen@kendari:~</span>
+          </div>
+          <pre class="terminal__body"><span class="t-prompt">$</span> whoami
+IT Support &amp; Web Developer
+
+<span class="t-prompt">$</span> status --current
+<span class="t-ok">●</span> IT operations      running
+<span class="t-ok">●</span> web development    available
+
+<span class="t-prompt">$</span> stack --list
+laravel, php, mysql, git, networking
+
+<span class="t-prompt">$</span> uptime
+since 2023 — Kendari, ID<span class="t-cursor">_</span></pre>
+        </div>
+
+        <ul class="hero__stats">
+          <li>
+            <span class="hero__stat-value">2+</span>
+            <span class="hero__stat-label">Tahun pengalaman</span>
+          </li>
+          <li>
+            <span class="hero__stat-value">IT</span>
+            <span class="hero__stat-label">Support &amp; operasional</span>
+          </li>
+          <li>
+            <span class="hero__stat-value">Web</span>
+            <span class="hero__stat-label">PHP / Laravel</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section__title" id="about-title">About Me</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>
+            Saya Awen, seorang IT Staff yang bekerja di lingkungan industri/pabrik dengan
+            fokus pada IT Support dan operasional teknologi sehari-hari.
+          </p>
+          <p>
+            Saat ini saya menangani berbagai kebutuhan IT seperti troubleshooting PC, printer,
+            jaringan, perangkat kantor, aplikasi internal, serta masalah teknis lainnya.
+          </p>
+          <p>
+            Sebelumnya saya bekerja sebagai Laravel Programmer di software house, mengembangkan
+            berbagai aplikasi dan website berbasis web, melakukan deployment, menggunakan Git,
+            serta bekerja bersama programmer lain dalam menyelesaikan project.
+          </p>
+
+          <p class="about__highlight">
+            Kombinasi dua sisi ini membuat saya memahami masalah teknis di lapangan
+            sekaligus mampu membangun solusi software-nya.
+          </p>
+        </div>
+
+        <div class="about__columns">
+          <article class="mini-card reveal">
+            <h3 class="mini-card__title">
+              <span class="mini-card__index" aria-hidden="true">01</span>
+              IT Support
+            </h3>
+            <ul class="list-check">
+              <li>Hardware troubleshooting</li>
+              <li>Printer</li>
+              <li>Windows</li>
+              <li>Network</li>
+              <li>File sharing</li>
+              <li>NComputing</li>
+              <li>Technical support</li>
+            </ul>
+          </article>
+
+          <article class="mini-card reveal">
+            <h3 class="mini-card__title">
+              <span class="mini-card__index" aria-hidden="true">02</span>
+              Web Development
+            </h3>
+            <ul class="list-check">
+              <li>PHP</li>
+              <li>Laravel</li>
+              <li>MySQL</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Git</li>
+              <li>Deployment</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section class="section section--alt" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Services</p>
+        <h2 class="section__title" id="services-title">What I Can Help With</h2>
+        <p class="section__lead">
+          Mulai dari perangkat yang bermasalah di kantor sampai aplikasi web yang dipakai
+          untuk operasional harian.
+        </p>
+      </div>
+
+      <div class="grid grid--4">
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a4 4 0 0 1 5 5L9.5 21.5a2.1 2.1 0 0 1-3-3L17.2 7.8"/>
+              <path d="M6.5 17.5l-2 2"/>
+            </svg>
+          </span>
+          <h3 class="card__title">IT Support</h3>
+          <p class="card__text">
+            Troubleshooting PC, Windows, software, printer, dan perangkat kantor.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="4" width="19" height="12" rx="2"/>
+              <path d="M8.5 20h7M12 16v4"/>
+              <circle cx="17.5" cy="8" r="1.2"/>
+            </svg>
+          </span>
+          <h3 class="card__title">Computer &amp; Network</h3>
+          <p class="card__text">
+            Instalasi, konfigurasi, maintenance komputer, jaringan lokal, file sharing,
+            dan troubleshooting koneksi.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/>
+            </svg>
+          </span>
+          <h3 class="card__title">Web Development</h3>
+          <p class="card__text">
+            Membangun website dan aplikasi web menggunakan PHP/Laravel sesuai kebutuhan.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/>
+              <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/>
+              <path d="M13.5 17.2h7.5M17.2 13.5v7.5"/>
+            </svg>
+          </span>
+          <h3 class="card__title">Business Applications</h3>
+          <p class="card__text">
+            Membantu digitalisasi proses kerja seperti administrasi, data, laporan,
+            inventory, dan aplikasi internal.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO
+       ============================================================ -->
+  <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Portfolio</p>
+        <h2 class="section__title" id="portfolio-title">Selected Work</h2>
+        <p class="section__lead">
+          Sebagian project web dan catatan kasus teknis yang saya tangani di lapangan.
+        </p>
+      </div>
+
+      <!-- Web Development -->
+      <h3 class="group-title reveal">
+        <span class="group-title__marker" aria-hidden="true"></span>
+        Web Development
+      </h3>
+
+      <div class="grid grid--2">
+
+        <article class="card work-card reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi tampilan company website">
+              <rect x="36" y="26" width="248" height="128" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="36" y1="50" x2="284" y2="50" stroke="currentColor" stroke-width="2"/>
+              <circle cx="50" cy="38" r="3" fill="currentColor"/>
+              <circle cx="62" cy="38" r="3" fill="currentColor"/>
+              <rect x="56" y="66" width="90" height="8" rx="4" fill="currentColor" opacity=".55"/>
+              <rect x="56" y="84" width="140" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="56" y="98" width="120" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="56" y="120" width="60" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="204" y="66" width="64" height="72" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Business / Company Website</h4>
+            <p class="work-card__desc">
+              Website profil perusahaan dengan halaman layanan, informasi kontak,
+              dan struktur konten yang mudah diperbarui.
+            </p>
+            <ul class="tags">
+              <li>Laravel</li><li>MySQL</li><li>Blade</li><li>CSS</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi landing page">
+              <rect x="36" y="26" width="248" height="128" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="36" y1="50" x2="284" y2="50" stroke="currentColor" stroke-width="2"/>
+              <rect x="60" y="70" width="110" height="10" rx="5" fill="currentColor" opacity=".55"/>
+              <rect x="60" y="90" width="150" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="60" y="104" width="130" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="60" y="124" width="56" height="16" rx="4" fill="currentColor" opacity=".8"/>
+              <rect x="124" y="124" width="56" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="196" y="70" width="76" height="70" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Landing Page</h4>
+            <p class="work-card__desc">
+              Halaman promosi produk/jasa yang ringan, responsif, dan fokus pada
+              satu tujuan konversi.
+            </p>
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi admin dashboard">
+              <rect x="36" y="26" width="248" height="128" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="104" y1="26" x2="104" y2="154" stroke="currentColor" stroke-width="2"/>
+              <line x1="36" y1="118" x2="104" y2="118" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+              <rect x="50" y="42" width="40" height="6" rx="3" fill="currentColor" opacity=".5"/>
+              <rect x="50" y="60" width="40" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="50" y="78" width="40" height="6" rx="3" fill="currentColor" opacity=".3"/>
+              <rect x="120" y="42" width="46" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="176" y="42" width="46" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="232" y="42" width="36" height="30" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="120" y="90" width="148" height="48" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M132 128l20-18 18 12 22-24 20 16 24-20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Admin Dashboard</h4>
+            <p class="work-card__desc">
+              Dashboard internal untuk mengelola data, pengguna, dan laporan
+              operasional harian.
+            </p>
+            <ul class="tags">
+              <li>Laravel</li><li>MySQL</li><li>Blade</li><li>JavaScript</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi aplikasi web Laravel">
+              <rect x="36" y="26" width="248" height="128" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="36" y1="50" x2="284" y2="50" stroke="currentColor" stroke-width="2"/>
+              <rect x="56" y="66" width="60" height="8" rx="4" fill="currentColor" opacity=".5"/>
+              <rect x="56" y="88" width="208" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="56" y="110" width="208" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="56" y="132" width="208" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="66" y="93" width="80" height="4" rx="2" fill="currentColor" opacity=".3"/>
+              <rect x="66" y="115" width="60" height="4" rx="2" fill="currentColor" opacity=".3"/>
+              <rect x="66" y="137" width="72" height="4" rx="2" fill="currentColor" opacity=".3"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Laravel Web Application</h4>
+            <p class="work-card__desc">
+              Aplikasi web untuk kebutuhan administrasi dan pengelolaan data,
+              lengkap dengan autentikasi dan modul CRUD.
+            </p>
+            <ul class="tags">
+              <li>PHP</li><li>Laravel</li><li>MySQL</li><li>Git</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- IT Support Case Studies -->
+      <h3 class="group-title reveal">
+        <span class="group-title__marker" aria-hidden="true"></span>
+        IT Support &amp; Technical Case Studies
+      </h3>
+
+      <p class="group-note reveal">
+        Ditulis secara anonim dan profesional. Tidak ada data konfigurasi atau
+        informasi internal perusahaan yang ditampilkan.
+      </p>
+
+      <div class="grid grid--3">
+
+        <article class="card work-card work-card--case reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi file server dan sesi SMB">
+              <rect x="122" y="30" width="76" height="120" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="122" y1="62" x2="198" y2="62" stroke="currentColor" stroke-width="2"/>
+              <line x1="122" y1="92" x2="198" y2="92" stroke="currentColor" stroke-width="2"/>
+              <circle cx="140" cy="46" r="4" fill="currentColor"/>
+              <circle cx="158" cy="46" r="4" fill="currentColor" opacity=".4"/>
+              <path d="M122 110H58M198 110h64" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6"/>
+              <circle cx="48" cy="110" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="272" cy="110" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Troubleshooting File Sharing</h4>
+            <p class="work-card__desc">
+              Investigated connection-limit issues on a Windows file server and
+              analyzed SMB sessions to restore user access.
+            </p>
+            <ul class="tags">
+              <li>Windows Server</li><li>SMB</li><li>Networking</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card work-card--case reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi thin client NComputing">
+              <rect x="60" y="40" width="120" height="76" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="84" y1="132" x2="156" y2="132" stroke="currentColor" stroke-width="2"/>
+              <line x1="120" y1="116" x2="120" y2="132" stroke="currentColor" stroke-width="2"/>
+              <rect x="214" y="40" width="52" height="96" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="214" y1="66" x2="266" y2="66" stroke="currentColor" stroke-width="2"/>
+              <line x1="214" y1="86" x2="266" y2="86" stroke="currentColor" stroke-width="2"/>
+              <line x1="214" y1="106" x2="266" y2="106" stroke="currentColor" stroke-width="2"/>
+              <path d="M180 88h34" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">NComputing L300 Troubleshooting</h4>
+            <p class="work-card__desc">
+              Diagnosed black-screen and session-drop issues on thin clients and
+              restored stable connection to the server list.
+            </p>
+            <ul class="tags">
+              <li>NComputing</li><li>Thin Client</li><li>LAN</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card work-card--case reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi printer jaringan">
+              <rect x="96" y="70" width="128" height="56" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="120" y="34" width="80" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="120" y="126" width="80" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="206" cy="86" r="4" fill="currentColor"/>
+              <line x1="120" y1="140" x2="200" y2="140" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Printer Troubleshooting</h4>
+            <p class="work-card__desc">
+              Resolved shared network printer issues: offline queues, driver mismatch,
+              and stuck print spooler services.
+            </p>
+            <ul class="tags">
+              <li>Printer</li><li>Spooler</li><li>Driver</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card work-card--case reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi jaringan lokal">
+              <circle cx="160" cy="90" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="70" cy="52" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="250" cy="52" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="70" cy="128" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="250" cy="128" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M142 82l-58-20M178 82l58-20M142 98l-58 20M178 98l58 20" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">Network Troubleshooting</h4>
+            <p class="work-card__desc">
+              Traced intermittent LAN connectivity in a production area by checking
+              cabling, switch ports, and IP address conflicts.
+            </p>
+            <ul class="tags">
+              <li>LAN</li><li>Switch</li><li>TCP/IP</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card work-card work-card--case reveal">
+          <div class="work-card__thumb">
+            <svg viewBox="0 0 320 180" role="img" aria-label="Ilustrasi troubleshooting PC dan Windows">
+              <rect x="86" y="34" width="148" height="94" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="86" y1="58" x2="234" y2="58" stroke="currentColor" stroke-width="2"/>
+              <rect x="100" y="72" width="30" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="140" y="72" width="30" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="180" y="72" width="30" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+              <rect x="100" y="112" width="110" height="6" rx="3" fill="currentColor" opacity=".35"/>
+              <line x1="140" y1="128" x2="180" y2="128" stroke="currentColor" stroke-width="2"/>
+              <line x1="160" y1="128" x2="160" y2="146" stroke="currentColor" stroke-width="2"/>
+              <line x1="126" y1="146" x2="194" y2="146" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="work-card__body">
+            <h4 class="work-card__title">PC &amp; Windows Troubleshooting</h4>
+            <p class="work-card__desc">
+              Handled OS errors, boot failures, driver problems, and performance
+              issues on office and production computers.
+            </p>
+            <ul class="tags">
+              <li>Windows</li><li>Hardware</li><li>Diagnostics</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE
+       ============================================================ -->
+  <section class="section section--alt" id="experience" aria-labelledby="experience-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Experience</p>
+        <h2 class="section__title" id="experience-title">Experience</h2>
+      </div>
+
+      <ol class="timeline">
+
+        <li class="timeline__item reveal">
+          <p class="timeline__period">2026 — Present</p>
+          <h3 class="timeline__role">IT Staff</h3>
+          <p class="timeline__company">PT Cipta Agung Manis</p>
+          <p class="timeline__desc">
+            Supporting day-to-day IT operations in a manufacturing environment,
+            including PC, printer, networking, hardware, internal applications,
+            and technical troubleshooting.
+          </p>
+        </li>
+
+        <li class="timeline__item reveal">
+          <p class="timeline__period">2023 — 2025</p>
+          <h3 class="timeline__role">Laravel Programmer</h3>
+          <p class="timeline__company">CV Techno's Studio</p>
+          <p class="timeline__desc">
+            Developed web-based projects using PHP/Laravel, created landing pages
+            and administrative interfaces, handled deployment, Git workflows,
+            and collaborated with other developers.
+          </p>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Skills</p>
+        <h2 class="section__title" id="skills-title">Tools &amp; Capabilities</h2>
+      </div>
+
+      <div class="skills__grid">
+        <div class="skills__group reveal">
+          <h3 class="skills__heading">IT Support</h3>
+          <ul class="chips">
+            <li class="chip">PC Troubleshooting</li>
+            <li class="chip">Windows</li>
+            <li class="chip">Printer</li>
+            <li class="chip">Hardware</li>
+            <li class="chip">Networking</li>
+            <li class="chip">File Sharing</li>
+            <li class="chip">NComputing</li>
+            <li class="chip">Technical Support</li>
+          </ul>
+        </div>
+
+        <div class="skills__group reveal">
+          <h3 class="skills__heading">Web Development</h3>
+          <ul class="chips">
+            <li class="chip">PHP</li>
+            <li class="chip">Laravel</li>
+            <li class="chip">MySQL</li>
+            <li class="chip">JavaScript</li>
+            <li class="chip">HTML</li>
+            <li class="chip">CSS</li>
+            <li class="chip">Git</li>
+            <li class="chip">Deployment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BLOG
+       ============================================================ -->
+  <section class="section section--alt" id="blog" aria-labelledby="blog-title">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Blog</p>
+        <h2 class="section__title" id="blog-title">Technical Notes</h2>
+        <p class="section__lead">
+          Catatan troubleshooting, web development, dan pengalaman teknis dari dunia kerja.
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+
+        <article class="blog-card reveal">
+          <p class="blog-card__cat">IT Support</p>
+          <h3 class="blog-card__title">
+            <a href="blog/ncomputing-l300-troubleshooting.html">
+              NComputing L300 Black Screen lalu Kembali ke Server List: Troubleshooting
+            </a>
+          </h3>
+          <p class="blog-card__excerpt">
+            Langkah-langkah yang saya pakai untuk melacak penyebab thin client
+            kehilangan sesi dan kembali ke daftar server.
+          </p>
+          <p class="blog-card__meta">
+            <time datetime="2026-02-12">12 Februari 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>6 menit baca</span>
+          </p>
+        </article>
+
+        <article class="blog-card reveal">
+          <p class="blog-card__cat">Networking</p>
+          <h3 class="blog-card__title">
+            <a href="blog/windows-file-server-smb.html">
+              Memahami Too Many Connections pada Windows File Server
+            </a>
+          </h3>
+          <p class="blog-card__excerpt">
+            Ketika user tiba-tiba tidak bisa membuka share folder, masalahnya
+            sering bukan di jaringan — tapi di batas sesi SMB.
+          </p>
+          <p class="blog-card__meta">
+            <time datetime="2026-01-28">28 Januari 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>7 menit baca</span>
+          </p>
+        </article>
+
+        <article class="blog-card reveal">
+          <p class="blog-card__cat">IT Support</p>
+          <h3 class="blog-card__title">
+            <a href="blog/printer-troubleshooting.html">
+              Troubleshooting Printer di Lingkungan Kantor
+            </a>
+          </h3>
+          <p class="blog-card__excerpt">
+            Urutan pemeriksaan yang efisien untuk printer sharing yang offline,
+            nyangkut di queue, atau tidak terdeteksi.
+          </p>
+          <p class="blog-card__meta">
+            <time datetime="2026-01-15">15 Januari 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>5 menit baca</span>
+          </p>
+        </article>
+
+        <article class="blog-card reveal">
+          <p class="blog-card__cat">Career</p>
+          <h3 class="blog-card__title">
+            <a href="blog/laravel-programmer-ke-it-support.html">
+              Dari Laravel Programmer Menjadi IT Support: Perbedaan Pekerjaan
+            </a>
+          </h3>
+          <p class="blog-card__excerpt">
+            Dua dunia yang terlihat berbeda, tetapi saling melengkapi lebih
+            dari yang saya duga sebelumnya.
+          </p>
+          <p class="blog-card__meta">
+            <time datetime="2026-01-04">4 Januari 2026</time>
+            <span aria-hidden="true">·</span>
+            <span>6 menit baca</span>
+          </p>
+        </article>
+
+      </div>
+
+      <p class="section__more reveal">
+        <a class="btn btn--ghost" href="blog/index.html">Lihat semua catatan</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact">
+        <div class="contact__intro reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section__title" id="contact-title">Let's Work Together</h2>
+          <p class="section__lead">
+            Having an IT problem, need technical support, or planning a web application?
+          </p>
+          <p class="contact__note">
+            Ceritakan kebutuhan atau kendala Anda — saya akan bantu menilai apakah
+            bisa diselesaikan langsung, perlu perbaikan perangkat, atau perlu dibangun
+            solusi aplikasinya.
+          </p>
+          <a class="btn btn--primary" href="https://wa.me/YOUR_WHATSAPP" target="_blank" rel="noopener">Contact Me</a>
+        </div>
+
+        <ul class="contact__list reveal">
+          <li class="contact__item">
+            <span class="contact__label">WhatsApp</span>
+            <a class="contact__value" href="https://wa.me/YOUR_WHATSAPP" target="_blank" rel="noopener">YOUR_WHATSAPP</a>
+          </li>
+          <li class="contact__item">
+            <span class="contact__label">Email</span>
+            <a class="contact__value" href="mailto:YOUR_EMAIL">YOUR_EMAIL</a>
+          </li>
+          <li class="contact__item">
+            <span class="contact__label">GitHub</span>
+            <a class="contact__value" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">github.com/YOUR_GITHUB</a>
+          </li>
+          <li class="contact__item">
+            <span class="contact__label">Location</span>
+            <span class="contact__value contact__value--static">Kendari, Indonesia</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <div class="footer__brand-block">
+      <p class="footer__brand">AWEN</p>
+      <p class="footer__tagline">IT Support &amp; Web Developer — Kendari, Indonesia</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Navigasi footer">
+      <ul>
+        <li><a href="#services">IT Support</a></li>
+        <li><a href="#services">Web Development</a></li>
+        <li><a href="blog/index.html">Technical Notes</a></li>
+      </ul>
+    </nav>
+
+    <p class="footer__copy">© 2026 Awen. IT Support &amp; Web Developer.</p>
+  </div>
+</footer>
+
+</body>
+</html>
