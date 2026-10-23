@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Awen — Web Developer &amp; IT Support Specialist</title>
-<meta name="description" content="Roots to Digital. Luxury editorial portfolio of Awen, Web Developer (PHP/Laravel) & IT Support Specialist based in Kendari, Indonesia.">
+<meta name="description" content="Portfolio profesional Awen, Web Developer (PHP/Laravel) & IT Support Specialist berbasis di Kendari, Indonesia. Membangun aplikasi web dan menjaga keandalan infrastruktur IT.">
 <link rel="canonical" href="https://awendev.online/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AwenDEV">
 <meta property="og:title" content="Awen — Web Developer &amp; IT Support Specialist">
-<meta property="og:description" content="Rooted in reality. Built for what's next. Luxury editorial portfolio bridging web development and real-world industrial IT support.">
+<meta property="og:description" content="Membangun aplikasi web dan menjaga infrastruktur IT operasional tetap andal. Berbasis di Kendari, Indonesia.">
 <meta property="og:url" content="https://awendev.online/">
 <meta property="og:image" content="https://awendev.online/assets/img/og-cover.jpg">
 <meta property="og:locale" content="id_ID">
@@ -20,12 +20,12 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Awen — Web Developer &amp; IT Support Specialist">
-<meta name="twitter:description" content="Web Developer (PHP/Laravel) & IT Support Specialist from Kendari, Indonesia.">
+<meta name="twitter:description" content="Web Developer (PHP/Laravel) & IT Support Specialist di Kendari, Indonesia.">
 <meta name="twitter:image" content="https://awendev.online/assets/img/og-cover.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -43,6 +43,17 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+<!-- Luxury Editorial Preloader -->
+<div id="site-loader" aria-hidden="true">
+  <div class="loader__content">
+    <span class="loader__brand">AWENDEV</span>
+    <span class="loader__sub">WAIT A SECOND...</span>
+    <div class="loader__bar-wrap">
+      <div class="loader__bar"></div>
+    </div>
+  </div>
+</div>
 
 <a class="skip-link" href="#main">Lompat ke konten utama</a>
 
@@ -64,11 +75,11 @@
 
     <nav class="nav" id="primary-nav" aria-label="Navigasi utama">
       <ul class="nav__list">
-        <li><a class="nav__link" href="#work">Work</a></li>
-        <li><a class="nav__link" href="#services">Services</a></li>
-        <li><a class="nav__link" href="#about">About</a></li>
-        <li><a class="nav__link" href="#experience">Experience</a></li>
-        <li><a class="nav__link" href="#contact">Contact</a></li>
+        <li><a class="nav__link" href="#work">Proyek</a></li>
+        <li><a class="nav__link" href="#services">Layanan</a></li>
+        <li><a class="nav__link" href="#about">Tentang</a></li>
+        <li><a class="nav__link" href="#experience">Pengalaman</a></li>
+        <li><a class="nav__link" href="#contact">Kontak</a></li>
       </ul>
     </nav>
 
@@ -88,89 +99,88 @@
      HERO
      ============================================================ -->
   <section class="hero" id="home" aria-labelledby="hero-title">
+    <div class="hero__3d-bg" aria-hidden="true">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+
     <div class="hero__grid">
       <div class="hero__content reveal">
         <p class="hero__eyebrow">
-          Kendari, Indonesia — Available for Work
+          Kendari, Indonesia — Siap untuk Kerja
         </p>
         <h1 class="hero__title" id="hero-title">
-          ROOTED IN REALITY.<br>
-          <em>BUILT FOR WHAT'S NEXT.</em>
+          Web Development<br>
+          <em>&amp; IT Support.</em>
         </h1>
         <p class="hero__lead">
-          I build high-performance web applications and keep mission-critical IT infrastructure running reliably in the real world.
+          Saya Awen. Membantu bisnis membangun website, aplikasi web, dan menjaga sistem IT operasional tetap berjalan dengan andal.
         </p>
         <div class="hero__cta-group">
-          <a class="btn-editorial" href="#work">Explore Work ↓</a>
-          <a class="btn-editorial btn-editorial--outline" href="#contact">Get in Touch</a>
+          <a class="btn-editorial" href="#work">Lihat Proyek ↓</a>
+          <a class="btn-editorial btn-editorial--outline" href="#contact">Hubungi Saya</a>
         </div>
-      </div>
-
-      <div class="hero__visual-wrap reveal">
-        <canvas id="hero-canvas" aria-label="Interactive 3D Roots to Digital sculpture"></canvas>
-        <span class="hero__canvas-badge">Sculptural Form: Roots ➔ Circuits</span>
       </div>
     </div>
 
     <div class="hero__footer-meta reveal">
       <div class="hero__stat-item">
         <span class="hero__stat-num">2+</span>
-        <span class="hero__stat-label">Years Professional Dev</span>
+        <span class="hero__stat-label">Tahun Pengalaman</span>
       </div>
       <div class="hero__stat-item">
         <span class="hero__stat-num">IT</span>
-        <span class="hero__stat-label">Industrial Operations</span>
+        <span class="hero__stat-label">Operasional Industri</span>
       </div>
       <div class="hero__stat-item">
         <span class="hero__stat-num">PHP</span>
-        <span class="hero__stat-label">Laravel &amp; Systems</span>
+        <span class="hero__stat-label">Laravel &amp; Sistem</span>
       </div>
       <div class="hero__stat-item">
         <span class="hero__stat-num">ID</span>
-        <span class="hero__stat-label">Based in Kendari</span>
+        <span class="hero__stat-label">Berbasis di Kendari</span>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-     ABOUT AWEN (VOL. 01 / ORIGIN)
+     TENTANG SAYA (ABOUT)
      ============================================================ -->
   <section class="section-editorial" id="about" aria-labelledby="about-title">
     <div class="section-header reveal">
       <div>
-        <span class="section-subtitle">Vol. 01 — Origin &amp; Identity</span>
-        <h2 class="section-title" id="about-title">About Awen</h2>
+        <span class="section-subtitle">Profil &amp; Keahlian</span>
+        <h2 class="section-title" id="about-title">Tentang Saya</h2>
       </div>
       <span class="editorial-label">IT Staff &amp; Web Developer</span>
     </div>
 
     <div class="about-grid">
       <div class="about-portrait reveal">
-        <img src="assets/img/og-cover.jpg" alt="Awen portrait editorial" loading="lazy" width="600" height="750">
+        <img src="assets/img/og-cover.jpg" alt="Foto Awen" loading="lazy" width="600" height="750">
       </div>
 
       <div class="about-text-column reveal">
         <p>
-          I am Awen, an IT Staff professional operating within demanding industrial manufacturing environments in Kendari, Indonesia. My day-to-day work anchors on hardware diagnostics, network troubleshooting, and keeping operational workflows uninterrupted.
+          Saya Awen, seorang praktisi IT yang bekerja di lingkungan industri manufaktur di Kendari, Indonesia. Fokus harian saya mencakup pemeliharaan perangkat, troubleshooting jaringan, serta memastikan kelancaran operasional teknologi perusahaan.
         </p>
         <blockquote class="quote-box">
-          "The combination of ground-level IT support and professional software engineering allows me to solve physical infrastructure bottlenecks while designing robust software solutions."
+          "Pengalaman menangani kendala teknis di lapangan secara langsung melengkapi kemampuan saya dalam merancang dan membangun solusi perangkat lunak yang andal."
         </blockquote>
         <p>
-          Previously, I worked as a <strong>Laravel Programmer</strong> at CV Techno's Studio (2023–2025), architecting web applications, landing pages, and administrative systems with modern PHP, Git, and cloud deployments.
+          Sebelumnya, saya berpengalaman sebagai <strong>Laravel Programmer</strong> di CV Techno's Studio (2023–2025), mengembangkan berbagai aplikasi web, landing page, sistem administrasi, serta melakukan deployment sistem.
         </p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-     TWO DISCIPLINES (VOL. 02 / DUAL FOCUS)
+     LAYANAN UTAMA (TWO DISCIPLINES)
      ============================================================ -->
-  <section class="section-editorial" id="services" aria-labelledby="disciplines-title">
+  <section class="section-editorial" id="services" aria-labelledby="services-title">
     <div class="section-header reveal">
       <div>
-        <span class="section-subtitle">Vol. 02 — Dual Focus</span>
-        <h2 class="section-title" id="disciplines-title">Two Complementary Disciplines</h2>
+        <span class="section-subtitle">Cakupan Keahlian</span>
+        <h2 class="section-title" id="services-title">Layanan Utama</h2>
       </div>
       <span class="editorial-label">Engineering &amp; Support</span>
     </div>
@@ -178,57 +188,57 @@
     <div class="disciplines-grid">
       <article class="discipline-card reveal">
         <div>
-          <span class="discipline-tag">Discipline 01</span>
+          <span class="discipline-tag">Bidang 01</span>
           <h3 class="discipline-title">Web Development</h3>
           <p class="discipline-desc">
-            Designing and building responsive, database-backed web applications, administrative portals, and business interfaces with pristine code architecture.
+            Membangun website bisnis, landing page, aplikasi web interaktif, dan dashboard administrasi menggunakan PHP, Laravel, MySQL, dan teknologi modern.
           </p>
         </div>
         <ul class="discipline-list">
           <li>PHP / Laravel</li>
-          <li>MySQL Databases</li>
+          <li>Database MySQL</li>
           <li>JavaScript / HTML / CSS</li>
           <li>Git &amp; Deployment</li>
-          <li>Landing Pages</li>
-          <li>Admin Dashboards</li>
+          <li>Landing Page Responsif</li>
+          <li>Dashboard Admin</li>
         </ul>
       </article>
 
       <article class="discipline-card reveal">
         <div>
-          <span class="discipline-tag">Discipline 02</span>
-          <h3 class="discipline-title">IT Support &amp; Operations</h3>
+          <span class="discipline-tag">Bidang 02</span>
+          <h3 class="discipline-title">IT Support &amp; Operasional</h3>
           <p class="discipline-desc">
-            Diagnosing and resolving complex hardware, printer, thin client (NComputing), file sharing (SMB), and local area networking issues in production.
+            Mengatasi masalah perangkat keras (PC), printer, jaringan lokal (LAN), berbagi file (SMB), dan thin client (NComputing) agar aktivitas kantor tetap lancar.
           </p>
         </div>
         <ul class="discipline-list">
-          <li>PC Diagnostics</li>
+          <li>Troubleshooting PC</li>
           <li>Windows Server / SMB</li>
-          <li>NComputing Thin Clients</li>
-          <li>Network / LAN Support</li>
-          <li>Printer Spoolers</li>
-          <li>Technical Support</li>
+          <li>Thin Client NComputing</li>
+          <li>Jaringan &amp; LAN Support</li>
+          <li>Printer &amp; Spooler</li>
+          <li>Dukungan Teknis IT</li>
         </ul>
       </article>
     </div>
   </section>
 
   <!-- ============================================================
-     PROJECT EXHIBITION (VOL. 03 / EXHIBITION)
+     PROYEK WEBSITE & KASUS IT SUPPORT (WORK)
      ============================================================ -->
   <section class="section-editorial" id="work" aria-labelledby="work-title">
     <div class="section-header reveal">
       <div>
-        <span class="section-subtitle">Vol. 03 — Selected Exhibitions</span>
-        <h2 class="section-title" id="work-title">Web Development Projects</h2>
+        <span class="section-subtitle">Portofolio &amp; Kasus Nyata</span>
+        <h2 class="section-title" id="work-title">Proyek &amp; Studi Kasus</h2>
       </div>
-      <span class="editorial-label">Curated Works</span>
+      <span class="editorial-label">Karya Terkurasi</span>
     </div>
 
     <div class="projects-stack">
       
-      <!-- Project 1: AwenVault -->
+      <!-- Proyek 1: AwenVault -->
       <article class="project-row reveal">
         <div class="project-image-wrap">
           <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -238,18 +248,18 @@
           <span class="project-num">01 / REPOSITORY</span>
           <h3 class="project-title">AwenVault — Personal Archive &amp; Repository</h3>
           <p class="project-desc">
-            A secure web-based knowledge repository integrated with Supabase and cloud storage for managing bookmarks, personal notes, and media archives.
+            Repositori pengetahuan personal berbasis web dengan integrasi Supabase dan cloud storage untuk mengelola catatan, bookmark, serta arsip media.
           </p>
           <ul class="project-tags">
             <li>HTML/CSS</li><li>JavaScript</li><li>Supabase</li><li>Cloudflare</li>
           </ul>
           <div>
-            <a class="btn-editorial btn-editorial--outline" href="https://awenvault.surge.sh" target="_blank" rel="noopener">Open Application ↗</a>
+            <a class="btn-editorial btn-editorial--outline" href="https://awenvault.surge.sh" target="_blank" rel="noopener">Buka Aplikasi ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Project 2: Lambu -->
+      <!-- Proyek 2: Lambu -->
       <article class="project-row reveal">
         <div class="project-image-wrap">
           <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -259,18 +269,18 @@
           <span class="project-num">02 / FULLSTACK</span>
           <h3 class="project-title">Lambu Fullstack Application</h3>
           <p class="project-desc">
-            Modern fullstack web application combining a robust Laravel backend with a high-performance Next.js and TypeScript frontend.
+            Aplikasi web fullstack modern dengan backend Laravel dan frontend Next.js, dirancang untuk performa tinggi dan skalabilitas sistem.
           </p>
           <ul class="project-tags">
             <li>Laravel</li><li>Next.js</li><li>TypeScript</li><li>TailwindCSS</li>
           </ul>
           <div>
-            <a class="btn-editorial btn-editorial--outline" href="https://github.com/awen-dml/lambu-frontend" target="_blank" rel="noopener">Explore Repository ↗</a>
+            <a class="btn-editorial btn-editorial--outline" href="https://github.com/awen-dml/lambu-frontend" target="_blank" rel="noopener">Lihat Repositori ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Project 3: RuangUsaha -->
+      <!-- Proyek 3: RuangUsaha -->
       <article class="project-row reveal">
         <div class="project-image-wrap">
           <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -280,18 +290,18 @@
           <span class="project-num">03 / COMMERCE</span>
           <h3 class="project-title">Ruang Usaha Landing Page</h3>
           <p class="project-desc">
-            Responsive commercial landing page designed for business promotion and service showcasing with pristine interface speed.
+            Landing page responsif dan optimal untuk promosi bisnis serta layanan komersial dengan desain antarmuka yang bersih dan cepat.
           </p>
           <ul class="project-tags">
             <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive</li>
           </ul>
           <div>
-            <a class="btn-editorial btn-editorial--outline" href="https://ruangusaha.online" target="_blank" rel="noopener">Visit Website ↗</a>
+            <a class="btn-editorial btn-editorial--outline" href="https://ruangusaha.online" target="_blank" rel="noopener">Kunjungi Website ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- Project 4: Portfolio -->
+      <!-- Proyek 4: Portfolio -->
       <article class="project-row reveal">
         <div class="project-image-wrap">
           <div class="browser-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
@@ -301,13 +311,13 @@
           <span class="project-num">04 / PERSONAL</span>
           <h3 class="project-title">Developer Portfolio</h3>
           <p class="project-desc">
-            Crafted digital portfolio showcasing professional trajectory, capabilities, and verified development projects.
+            Website portofolio pribadi yang menampilkan pengalaman, keahlian, dan proyek-proyek yang telah dikerjakan.
           </p>
           <ul class="project-tags">
             <li>HTML5</li><li>CSS3</li><li>JavaScript</li>
           </ul>
           <div>
-            <a class="btn-editorial btn-editorial--outline" href="https://rahmathidayatdev.netlify.app/" target="_blank" rel="noopener">Visit Portfolio ↗</a>
+            <a class="btn-editorial btn-editorial--outline" href="https://rahmathidayatdev.netlify.app/" target="_blank" rel="noopener">Kunjungi Portofolio ↗</a>
           </div>
         </div>
       </article>
@@ -318,79 +328,79 @@
     <div style="margin-top: 140px;">
       <div class="section-header reveal">
         <div>
-          <span class="section-subtitle">Vol. 03.1 — Field Diagnostics</span>
-          <h3 class="section-title">IT Support Real Cases</h3>
+          <span class="section-subtitle">Studi Kasus Lapangan</span>
+          <h3 class="section-title">Kasus IT Support</h3>
         </div>
-        <span class="editorial-label">Anonymous &amp; Professional</span>
+        <span class="editorial-label">Anonim &amp; Profesional</span>
       </div>
 
       <div class="case-studies-grid">
         <article class="case-card reveal">
           <span class="case-category">Windows Server / SMB</span>
           <h4 class="case-title">Troubleshooting File Sharing</h4>
-          <p class="case-desc">Investigated connection-limit issues on a Windows file server and analyzed SMB sessions to restore user access.</p>
+          <p class="case-desc">Menyelidiki masalah batas koneksi pada Windows file server dan menganalisis sesi SMB untuk memulihkan akses pengguna.</p>
         </article>
 
         <article class="case-card reveal">
           <span class="case-category">Thin Client / LAN</span>
           <h4 class="case-title">NComputing L300 Troubleshooting</h4>
-          <p class="case-desc">Diagnosed black-screen and session-drop issues on thin clients and restored stable connection to the server list.</p>
+          <p class="case-desc">Mengatasi layar hitam (black screen) dan putusnya sesi pada thin client serta memulihkan koneksi stabil ke server.</p>
         </article>
 
         <article class="case-card reveal">
           <span class="case-category">Hardware / Spooler</span>
           <h4 class="case-title">Printer Troubleshooting</h4>
-          <p class="case-desc">Resolved shared network printer issues: offline queues, driver mismatch, and stuck print spooler services.</p>
+          <p class="case-desc">Memperbaiki masalah printer jaringan bersama: antrean cetak macet, ketidakcocokan driver, dan layanan spooler.</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-     EXPERIENCE & TIMELINE (VOL. 04 / CAREER)
+     PENGALAMAN & TIMELINE (EXPERIENCE)
      ============================================================ -->
   <section class="section-editorial" id="experience" aria-labelledby="experience-title">
     <div class="section-header reveal">
       <div>
-        <span class="section-subtitle">Vol. 04 — Professional Trajectory</span>
-        <h2 class="section-title" id="experience-title">Experience</h2>
+        <span class="section-subtitle">Jejak Profesional</span>
+        <h2 class="section-title" id="experience-title">Pengalaman Kerja</h2>
       </div>
-      <span class="editorial-label">Verified Record</span>
+      <span class="editorial-label">Rekam Jejak</span>
     </div>
 
     <div class="timeline-editorial">
       <div class="timeline-item reveal">
-        <span class="timeline-period">April 2026 — Present</span>
+        <span class="timeline-period">April 2026 — Sekarang</span>
         <h3 class="timeline-role">IT Staff</h3>
         <p class="timeline-company">PT Cipta Agung Manis</p>
         <p class="timeline-desc">
-          Managing daily IT operations in an industrial manufacturing setting. Overseeing PC maintenance, printer peripherals, network stability, hardware diagnostics, and resolving technical bottlenecks for staff.
+          Mengelola operasional IT harian di lingkungan manufaktur industri. Bertanggung jawab atas pemeliharaan PC, perangkat printer, stabilitas jaringan, diagnostik perangkat keras, serta penyelesaian kendala teknis karyawan.
         </p>
       </div>
 
       <div class="timeline-item reveal">
-        <span class="timeline-period">August 2023 — August 2025</span>
+        <span class="timeline-period">Agustus 2023 — Agustus 2025</span>
         <h3 class="timeline-role">Laravel Programmer</h3>
         <p class="timeline-company">CV Techno's Studio</p>
         <p class="timeline-desc">
-          Developed dynamic web applications using PHP and Laravel. Created landing pages, administration panels, executed cloud deployments, managed Git version control, and collaborated within software engineering teams.
+          Mengembangkan aplikasi web menggunakan PHP dan Laravel. Membuat landing page, panel administrasi, melakukan deployment cloud, mengelola Git, serta berkolaborasi dengan tim pengembang.
         </p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-     CONTACT FINALE (VOL. 05 / CONTACT)
+     KONTAK (CONTACT FINALE)
      ============================================================ -->
   <section class="section-editorial section-editorial--dark" id="contact" aria-labelledby="contact-title">
     <div class="contact-finale">
       <div class="reveal">
-        <span class="section-subtitle" style="color: var(--color-sage);">Vol. 05 — Initiate Connection</span>
-        <h2 class="contact-headline" id="contact-title">LET'S MAKE<br>SOMETHING<br>MATTER.</h2>
+        <span class="section-subtitle" style="color: var(--color-sage);">Mari Terhubung</span>
+        <h2 class="contact-headline" id="contact-title">MARI KITA<br>BANGUN SESUATU<br>YANG BERMANFAAT.</h2>
         <p class="contact-lead">
-          From digital web applications to dependable industrial IT systems — let's build something useful.
+          Punya kendala IT, butuh dukungan teknis, atau berencana membuat aplikasi web? Mari diskusikan kebutuhan Anda.
         </p>
-        <a class="btn-editorial" href="https://wa.me/6282293896513" target="_blank" rel="noopener">Start Conversation on WhatsApp ↗</a>
+        <a class="btn-editorial" href="https://wa.me/6282293896513" target="_blank" rel="noopener">Hubungi via WhatsApp ↗</a>
       </div>
 
       <div class="reveal">
@@ -400,16 +410,16 @@
             <a href="https://wa.me/6282293896513" target="_blank" rel="noopener">+62 822-9389-6513</a>
           </li>
           <li>
-            <span style="color: var(--color-muted);">Direct Email</span>
+            <span style="color: var(--color-muted);">Email Langsung</span>
             <a href="mailto:awendml@gmail.com">awendml@gmail.com</a>
           </li>
           <li>
-            <span style="color: var(--color-muted);">GitHub Repository</span>
+            <span style="color: var(--color-muted);">Repositori GitHub</span>
             <a href="https://github.com/awen-dml" target="_blank" rel="noopener">github.com/awen-dml</a>
           </li>
           <li>
-            <span style="color: var(--color-muted);">Base Location</span>
-            <span>Kendari, Southeast Sulawesi, ID</span>
+            <span style="color: var(--color-muted);">Lokasi</span>
+            <span>Kendari, Sulawesi Tenggara, ID</span>
           </li>
         </ul>
       </div>
@@ -422,7 +432,7 @@
      FOOTER
      ============================================================ -->
 <footer class="site-footer">
-  <div>© 2026 AwenDEV. All rights reserved.</div>
+  <div>© 2026 AwenDEV. Hak cipta dilindungi.</div>
   <div>Web Development &amp; IT Support — Kendari, ID</div>
 </footer>
 

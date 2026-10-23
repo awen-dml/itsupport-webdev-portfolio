@@ -1,11 +1,26 @@
 /* ============================================================
-   AWENDEV.ONLINE — ROOTS TO DIGITAL × THREE.JS SCULPTURE & INTERACTION
+   AWENDEV.ONLINE — WORKSTATION 3D SETUP & PRELOADER
    ============================================================ */
 (function () {
   'use strict';
 
   var doc = document;
   var root = doc.documentElement;
+
+  /* ----------------------------------------------------------
+     Preloader Dismissal
+     ---------------------------------------------------------- */
+  var dismissLoader = function () {
+    var loader = doc.getElementById('site-loader');
+    if (loader && !loader.classList.contains('is-loaded')) {
+      loader.classList.add('is-loaded');
+    }
+  };
+
+  window.addEventListener('load', function () {
+    setTimeout(dismissLoader, 400);
+  });
+  setTimeout(dismissLoader, 1500); // Safety fallback
 
   /* ----------------------------------------------------------
      1. Mobile Navigation Toggle
@@ -74,81 +89,121 @@
   }
 
   /* ----------------------------------------------------------
-     4. Three.js Interactive Sculpture: Roots to Digital
+     4. Three.js Workstation Setup: PC Tower, Monitor, Printer, Router
      ---------------------------------------------------------- */
   var canvasWrap = doc.getElementById('hero-canvas');
   if (canvasWrap && typeof THREE !== 'undefined') {
     try {
       var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(45, canvasWrap.clientWidth / canvasWrap.clientHeight, 0.1, 1000);
-      camera.position.z = 6;
+      var camera = new THREE.PerspectiveCamera(40, canvasWrap.clientWidth / canvasWrap.clientHeight, 0.1, 1000);
+      camera.position.set(0, 0.4, 5.8);
 
       var renderer = new THREE.WebGLRenderer({ canvas: canvasWrap, alpha: true, antialias: true });
       renderer.setSize(canvasWrap.clientWidth, canvasWrap.clientHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      // Lighting
-      var ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      // Studio Lighting
+      var ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
       scene.add(ambientLight);
 
-      var pointLight1 = new THREE.PointLight(0xa9653b, 2, 50); // earth tone
-      pointLight1.position.set(5, 5, 5);
-      scene.add(pointLight1);
+      var dirLight = new THREE.DirectionalLight(0xffffff, 1.3);
+      dirLight.position.set(5, 7, 5);
+      scene.add(dirLight);
 
-      var pointLight2 = new THREE.PointLight(0x879568, 2, 50); // leaf tone
-      pointLight2.position.set(-5, -5, 3);
-      scene.add(pointLight2);
+      var fillLight = new THREE.DirectionalLight(0xb8c4a0, 0.5); // sage fill
+      fillLight.position.set(-5, -2, 4);
+      scene.add(fillLight);
 
-      // Sculpture Group (Roots evolving into industrial rings & digital nodes)
-      var sculptureGroup = new THREE.Group();
+      var workstationGroup = new THREE.Group();
 
-      // Organic Root Branches (Torus Knots & Cylinders)
-      var rootMat = new THREE.MeshStandardMaterial({
-        color: 0xa9653b,
-        roughness: 0.8,
-        metalness: 0.2,
-        wireframe: false
-      });
-      var rootGeo = new THREE.TorusKnotGeometry(1.2, 0.25, 128, 16, 2, 3);
-      var rootMesh = new THREE.Mesh(rootGeo, rootMat);
-      sculptureGroup.add(rootMesh);
+      // Materials
+      var darkMat = new THREE.MeshStandardMaterial({ color: 0x1c1b19, roughness: 0.5, metalness: 0.3 });
+      var metalMat = new THREE.MeshStandardMaterial({ color: 0x8c8680, roughness: 0.2, metalness: 0.85 });
+      var pcBodyMat = new THREE.MeshStandardMaterial({ color: 0x22201e, roughness: 0.4, metalness: 0.6 });
+      var accentMat = new THREE.MeshBasicMaterial({ color: 0x879568 }); // sage green LED
 
-      // Industrial Structural Rings
-      var ringMat = new THREE.MeshStandardMaterial({
-        color: 0x6c6863,
-        roughness: 0.3,
-        metalness: 0.8
-      });
-      for (var i = 0; i < 3; i++) {
-        var ringGeo = new THREE.TorusGeometry(1.8 + i * 0.4, 0.04, 16, 100);
-        var ringMesh = new THREE.Mesh(ringGeo, ringMat);
-        ringMesh.rotation.x = Math.PI / (2 + i);
-        ringMesh.rotation.y = Math.PI / (4 * i + 1);
-        sculptureGroup.add(ringMesh);
-      }
+      // --- 1. MONITOR ---
+      var uiCanvas = document.createElement('canvas');
+      uiCanvas.width = 512;
+      uiCanvas.height = 320;
+      var ctx = uiCanvas.getContext('2d');
+      ctx.fillStyle = '#1a1a1a';
+      ctx.fillRect(0, 0, 512, 320);
+      ctx.fillStyle = '#262422';
+      ctx.fillRect(0, 0, 110, 320);
+      ctx.fillStyle = '#33302c';
+      ctx.fillRect(110, 0, 402, 48);
+      ctx.fillStyle = '#879568';
+      ctx.fillRect(130, 18, 16, 12);
+      ctx.fillStyle = '#f9f8f6';
+      ctx.font = 'bold 14px Inter, sans-serif';
+      ctx.fillText('AwenDev Workstation', 158, 34);
+      ctx.fillStyle = '#22201e';
+      ctx.fillRect(130, 68, 170, 100);
+      ctx.fillRect(320, 68, 162, 100);
+      ctx.fillStyle = '#a9653b';
+      ctx.fillRect(146, 88, 50, 8);
+      ctx.fillStyle = '#f9f8f6';
+      ctx.font = 'bold 18px Inter, sans-serif';
+      ctx.fillText('Web Dev', 146, 120);
+      ctx.fillStyle = '#879568';
+      ctx.fillRect(336, 88, 40, 8);
+      ctx.fillStyle = '#f9f8f6';
+      ctx.fillText('IT Support', 336, 120);
 
-      // Digital Nodes / Circuit Particles (Points)
-      var particleCount = 200;
-      var particleGeo = new THREE.BufferGeometry();
-      var positions = new Float32Array(particleCount * 3);
-      for (var p = 0; p < particleCount * 3; p += 3) {
-        positions[p] = (Math.random() - 0.5) * 5;
-        positions[p + 1] = (Math.random() - 0.5) * 5;
-        positions[p + 2] = (Math.random() - 0.5) * 5;
-      }
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      var particleMat = new THREE.PointsMaterial({
-        color: 0xd4af37, // gold accent
-        size: 0.05,
-        transparent: true,
-        opacity: 0.8
-      });
-      var particlePoints = new THREE.Points(particleGeo, particleMat);
-      sculptureGroup.add(particlePoints);
+      var screenTexture = new THREE.CanvasTexture(uiCanvas);
+      var screenMat = new THREE.MeshBasicMaterial({ map: screenTexture });
 
-      scene.add(sculptureGroup);
+      var monitorGeo = new THREE.BoxGeometry(2.2, 1.3, 0.05);
+      var monitorMesh = new THREE.Mesh(monitorGeo, [
+        darkMat, darkMat, darkMat, darkMat, screenMat, darkMat
+      ]);
+      monitorMesh.position.set(-0.4, 0.4, 0);
+      workstationGroup.add(monitorMesh);
 
-      // Mouse interactivity
+      // Monitor Stand
+      var standNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 0.5, 12), metalMat);
+      standNeck.position.set(-0.4, -0.3, -0.05);
+      workstationGroup.add(standNeck);
+
+      var standBase = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.03, 0.5), metalMat);
+      standBase.position.set(-0.4, -0.55, 0.05);
+      workstationGroup.add(standBase);
+
+      // --- 2. PC TOWER CASE ---
+      var towerGeo = new THREE.BoxGeometry(0.6, 1.4, 1.0);
+      var towerMesh = new THREE.Mesh(towerGeo, pcBodyMat);
+      towerMesh.position.set(-1.4, 0.1, -0.2);
+      workstationGroup.add(towerMesh);
+
+      var pcLed = new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8), accentMat);
+      pcLed.position.set(-1.4, 0.65, 0.31);
+      workstationGroup.add(pcLed);
+
+      // --- 3. PRINTER ---
+      var printerGeo = new THREE.BoxGeometry(0.9, 0.4, 0.7);
+      var printerMesh = new THREE.Mesh(printerGeo, darkMat);
+      printerMesh.position.set(1.0, -0.35, 0.1);
+      workstationGroup.add(printerMesh);
+
+      var trayGeo = new THREE.BoxGeometry(0.6, 0.08, 0.3);
+      var trayMesh = new THREE.Mesh(trayGeo, metalMat);
+      trayMesh.position.set(1.0, -0.1, 0.35);
+      workstationGroup.add(trayMesh);
+
+      // --- 4. NETWORK ROUTER ---
+      var routerGeo = new THREE.BoxGeometry(0.5, 0.08, 0.35);
+      var routerMesh = new THREE.Mesh(routerGeo, darkMat);
+      routerMesh.position.set(0.4, -0.51, 0.4);
+      workstationGroup.add(routerMesh);
+
+      var antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, 0.35, 8), metalMat);
+      antenna.position.set(0.55, -0.3, 0.4);
+      workstationGroup.add(antenna);
+
+      scene.add(workstationGroup);
+
+      // Gentle mouse parallax & tilt
       var mouseX = 0, mouseY = 0;
       var targetX = 0, targetY = 0;
       doc.addEventListener('mousemove', function (e) {
@@ -160,14 +215,14 @@
       var clock = new THREE.Clock();
       function animate() {
         requestAnimationFrame(animate);
-        var delta = clock.getDelta();
         var time = clock.getElapsedTime();
 
-        targetX += (mouseX - targetX) * 0.05;
-        targetY += (mouseY - targetY) * 0.05;
+        targetX += (mouseX - targetX) * 0.04;
+        targetY += (mouseY - targetY) * 0.04;
 
-        sculptureGroup.rotation.y = time * 0.15 + targetX * 0.5;
-        sculptureGroup.rotation.x = time * 0.1 + targetY * 0.5;
+        workstationGroup.rotation.y = targetX * 0.2;
+        workstationGroup.rotation.x = -targetY * 0.12;
+        workstationGroup.position.y = Math.sin(time * 1.2) * 0.02;
 
         renderer.render(scene, camera);
       }
@@ -184,8 +239,11 @@
       });
 
     } catch (err) {
-      console.warn('Three.js initialization fallback:', err);
+      console.warn('Three.js workstation fallback:', err);
+      dismissLoader();
     }
+  } else {
+    dismissLoader();
   }
 
 })();
