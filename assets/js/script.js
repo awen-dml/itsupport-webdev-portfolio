@@ -1,12 +1,5 @@
 /* ============================================================
-   AWEN — IT Support & Web Developer
-   script.js
-   Berisi:
-   1. Mobile navigation
-   2. Header shadow saat scroll
-   3. Active navigation state
-   4. Reveal animation saat masuk viewport
-   5. Theme toggle (light/dark)
+   AWENDEV.ONLINE — ROOTS TO DIGITAL × THREE.JS SCULPTURE & INTERACTION
    ============================================================ */
 (function () {
   'use strict';
@@ -15,7 +8,7 @@
   var root = doc.documentElement;
 
   /* ----------------------------------------------------------
-     1. Mobile navigation
+     1. Mobile Navigation Toggle
      ---------------------------------------------------------- */
   var navToggle = doc.querySelector('.nav-toggle');
   var nav = doc.querySelector('#primary-nav');
@@ -24,117 +17,18 @@
     navToggle.addEventListener('click', function () {
       var isOpen = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute(
-        'aria-label',
-        isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'
-      );
     });
 
-    // Tutup menu saat link diklik (mobile)
     nav.addEventListener('click', function (e) {
       if (e.target.closest('a') && nav.classList.contains('is-open')) {
         nav.classList.remove('is-open');
         navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Buka menu navigasi');
       }
     });
-
-    // Tutup menu saat klik di luar
-    doc.addEventListener('click', function (e) {
-      if (!nav.classList.contains('is-open')) return;
-      if (nav.contains(e.target) || navToggle.contains(e.target)) return;
-      nav.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
   }
 
   /* ----------------------------------------------------------
-     2. Header shadow saat scroll
-     ---------------------------------------------------------- */
-  var header = doc.querySelector('.site-header');
-  if (header) {
-    var onScrollHeader = function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 6);
-    };
-    onScrollHeader();
-    window.addEventListener('scroll', onScrollHeader, { passive: true });
-  }
-
-  /* ----------------------------------------------------------
-     3. Active navigation state (IntersectionObserver)
-     ---------------------------------------------------------- */
-  var navLinks = Array.prototype.slice.call(
-    doc.querySelectorAll('.nav__link[href^="#"]')
-  );
-
-  var sections = navLinks
-    .map(function (link) {
-      var id = link.getAttribute('href').slice(1);
-      return id ? doc.getElementById(id) : null;
-    })
-    .filter(Boolean);
-
-  if ('IntersectionObserver' in window && sections.length) {
-    var setActive = function (id) {
-      navLinks.forEach(function (link) {
-        var active = link.getAttribute('href') === '#' + id;
-        link.classList.toggle('is-active', active);
-        if (active) {
-          link.setAttribute('aria-current', 'true');
-        } else {
-          link.removeAttribute('aria-current');
-        }
-      });
-    };
-
-    var sectionObserver = new IntersectionObserver(
-      function (entries) {
-        // Ambil section yang paling terlihat
-        var visible = entries
-          .filter(function (e) { return e.isIntersecting; })
-          .sort(function (a, b) {
-            return b.intersectionRatio - a.intersectionRatio;
-          });
-        if (visible.length) setActive(visible[0].target.id);
-      },
-      {
-        rootMargin: '-45% 0px -50% 0px',
-        threshold: [0, 0.25, 0.5, 0.75, 1]
-      }
-    );
-
-    sections.forEach(function (sec) { sectionObserver.observe(sec); });
-  }
-
-  /* ----------------------------------------------------------
-     4. Reveal animation saat masuk viewport
-     ---------------------------------------------------------- */
-  var revealEls = Array.prototype.slice.call(doc.querySelectorAll('.reveal'));
-
-  var prefersReduced = window.matchMedia
-    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    : false;
-
-  if (!revealEls.length) {
-    /* no-op */
-  } else if (prefersReduced || !('IntersectionObserver' in window)) {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-  } else {
-    var revealObserver = new IntersectionObserver(
-      function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        });
-      },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
-    );
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-  }
-
-  /* ----------------------------------------------------------
-     5. Theme toggle (light/dark)
+     2. Theme Toggle (Light / Dark)
      ---------------------------------------------------------- */
   var themeToggle = doc.querySelector('[data-theme-toggle]');
   var STORAGE_KEY = 'awen-theme';
@@ -142,55 +36,156 @@
   var applyTheme = function (theme) {
     root.setAttribute('data-theme', theme);
     if (themeToggle) {
-      var isDark = theme === 'dark';
-      themeToggle.setAttribute('aria-pressed', String(isDark));
-      themeToggle.setAttribute(
-        'aria-label',
-        isDark ? 'Aktifkan tema terang' : 'Aktifkan tema gelap'
-      );
+      themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
     }
   };
 
-  var getStoredTheme = function () {
-    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
-  };
-  var setStoredTheme = function (theme) {
-    try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { }
-  };
-
-  // Sinkronkan state tombol dengan tema awal
-  applyTheme(root.getAttribute('data-theme') || 'light');
+  try {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) applyTheme(stored);
+  } catch (e) {}
 
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
       var current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       var next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
-      setStoredTheme(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
     });
   }
 
   /* ----------------------------------------------------------
-     6. Smooth scroll (fallback untuk browser lama)
+     3. Scroll Reveal (IntersectionObserver)
      ---------------------------------------------------------- */
-  if (!('scrollBehavior' in root.style)) {
-    doc.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var id = link.getAttribute('href');
-        if (!id || id === '#') return;
-        var target = doc.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        var top =
-          target.getBoundingClientRect().top +
-          window.pageYOffset -
-          (parseInt(
-            getComputedStyle(root).getPropertyValue('--header-h'),
-            10
-          ) || 64) -
-          12;
-        window.scrollTo({ top: top, behavior: 'smooth' });
+  var revealEls = doc.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
       });
-    });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
+
+  /* ----------------------------------------------------------
+     4. Three.js Interactive Sculpture: Roots to Digital
+     ---------------------------------------------------------- */
+  var canvasWrap = doc.getElementById('hero-canvas');
+  if (canvasWrap && typeof THREE !== 'undefined') {
+    try {
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(45, canvasWrap.clientWidth / canvasWrap.clientHeight, 0.1, 1000);
+      camera.position.z = 6;
+
+      var renderer = new THREE.WebGLRenderer({ canvas: canvasWrap, alpha: true, antialias: true });
+      renderer.setSize(canvasWrap.clientWidth, canvasWrap.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // Lighting
+      var ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+
+      var pointLight1 = new THREE.PointLight(0xa9653b, 2, 50); // earth tone
+      pointLight1.position.set(5, 5, 5);
+      scene.add(pointLight1);
+
+      var pointLight2 = new THREE.PointLight(0x879568, 2, 50); // leaf tone
+      pointLight2.position.set(-5, -5, 3);
+      scene.add(pointLight2);
+
+      // Sculpture Group (Roots evolving into industrial rings & digital nodes)
+      var sculptureGroup = new THREE.Group();
+
+      // Organic Root Branches (Torus Knots & Cylinders)
+      var rootMat = new THREE.MeshStandardMaterial({
+        color: 0xa9653b,
+        roughness: 0.8,
+        metalness: 0.2,
+        wireframe: false
+      });
+      var rootGeo = new THREE.TorusKnotGeometry(1.2, 0.25, 128, 16, 2, 3);
+      var rootMesh = new THREE.Mesh(rootGeo, rootMat);
+      sculptureGroup.add(rootMesh);
+
+      // Industrial Structural Rings
+      var ringMat = new THREE.MeshStandardMaterial({
+        color: 0x6c6863,
+        roughness: 0.3,
+        metalness: 0.8
+      });
+      for (var i = 0; i < 3; i++) {
+        var ringGeo = new THREE.TorusGeometry(1.8 + i * 0.4, 0.04, 16, 100);
+        var ringMesh = new THREE.Mesh(ringGeo, ringMat);
+        ringMesh.rotation.x = Math.PI / (2 + i);
+        ringMesh.rotation.y = Math.PI / (4 * i + 1);
+        sculptureGroup.add(ringMesh);
+      }
+
+      // Digital Nodes / Circuit Particles (Points)
+      var particleCount = 200;
+      var particleGeo = new THREE.BufferGeometry();
+      var positions = new Float32Array(particleCount * 3);
+      for (var p = 0; p < particleCount * 3; p += 3) {
+        positions[p] = (Math.random() - 0.5) * 5;
+        positions[p + 1] = (Math.random() - 0.5) * 5;
+        positions[p + 2] = (Math.random() - 0.5) * 5;
+      }
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      var particleMat = new THREE.PointsMaterial({
+        color: 0xd4af37, // gold accent
+        size: 0.05,
+        transparent: true,
+        opacity: 0.8
+      });
+      var particlePoints = new THREE.Points(particleGeo, particleMat);
+      sculptureGroup.add(particlePoints);
+
+      scene.add(sculptureGroup);
+
+      // Mouse interactivity
+      var mouseX = 0, mouseY = 0;
+      var targetX = 0, targetY = 0;
+      doc.addEventListener('mousemove', function (e) {
+        mouseX = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+        mouseY = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      });
+
+      // Animation loop
+      var clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        var delta = clock.getDelta();
+        var time = clock.getElapsedTime();
+
+        targetX += (mouseX - targetX) * 0.05;
+        targetY += (mouseY - targetY) * 0.05;
+
+        sculptureGroup.rotation.y = time * 0.15 + targetX * 0.5;
+        sculptureGroup.rotation.x = time * 0.1 + targetY * 0.5;
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Resize listener
+      window.addEventListener('resize', function () {
+        if (!canvasWrap) return;
+        var width = canvasWrap.clientWidth;
+        var height = canvasWrap.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      });
+
+    } catch (err) {
+      console.warn('Three.js initialization fallback:', err);
+    }
+  }
+
 })();
