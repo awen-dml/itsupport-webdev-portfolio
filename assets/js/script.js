@@ -114,6 +114,8 @@
       var frameUseOrder = [];
       var currentFrame = 0;
       var previousFrame = 1;
+      var canvasLogicalWidth = 0;
+      var canvasLogicalHeight = 0;
       var scrollQueued = false;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var initialRect = visualLayer.getBoundingClientRect();
@@ -152,18 +154,59 @@
         return { top: rect.top + window.scrollY, height: rect.height };
       }
 
-      function updateCanvasSize() {
+      function updateCanvasSize(forceResize) {
         var width = Math.max(visualLayer.clientWidth, 1);
         var height = Math.max(visualLayer.clientHeight, 1);
+        if (!forceResize && Math.abs(width - canvasLogicalWidth) < 32 && Math.abs(height - canvasLogicalHeight) < 32) return;
         var pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
         canvasWrap.width = Math.round(width * pixelRatio);
         canvasWrap.height = Math.round(height * pixelRatio);
         context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        canvasLogicalWidth = width;
+        canvasLogicalHeight = height;
         drawFrame(currentFrame);
       }
 
       function processFrame(image) {
-        return image;
+        var source = doc.createElement('canvas');
+        var sourceSize = 768;
+        source.width = sourceSize;
+        source.height = sourceSize;
+        var sourceContext = source.getContext('2d', { willReadFrequently: true });
+        if (!sourceContext) {
+          console.warn('Hero frame processing skipped: source canvas context unavailable.');
+          return null;
+        }
+        sourceContext.drawImage(image, 0, 0, sourceSize, sourceSize);
+
+        var processed = doc.createElement('canvas');
+        processed.width = sourceSize;
+        processed.height = sourceSize;
+        var processedContext = processed.getContext('2d', { willReadFrequently: true });
+        if (!processedContext) {
+          console.warn('Hero frame processing skipped: frame canvas context unavailable.');
+          return null;
+        }
+        processedContext.drawImage(source, 0, 0);
+        var pixels = processedContext.getImageData(0, 0, sourceSize, sourceSize);
+        var data = pixels.data;
+        var inkColor = getComputedStyle(root).getPropertyValue('--color-charcoal').trim();
+        var color = doc.createElement('canvas').getContext('2d');
+        if (!color) return null;
+        color.fillStyle = inkColor;
+        color.fillRect(0, 0, 1, 1);
+        var rgb = color.getImageData(0, 0, 1, 1).data;
+
+        for (var i = 0; i < data.length; i += 4) {
+          var luminance = (data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114) / 255;
+          var ink = clamp((0.97 - luminance) / 0.24, 0, 1);
+          data[i] = rgb[0];
+          data[i + 1] = rgb[1];
+          data[i + 2] = rgb[2];
+          data[i + 3] = Math.round(data[i + 3] * ink);
+        }
+        processedContext.putImageData(pixels, 0, 0);
+        return { canvas: processed, source: source };
       }
 
       function rememberFrame(index, frame) {
@@ -186,19 +229,33 @@
         if (!width || !height) return;
         context.clearRect(0, 0, width, height);
         var frame = frameCache[index];
-        if (!frame) return;
-
-        var scale = Math.max(width / frame.naturalWidth, height / frame.naturalHeight);
-        var drawWidth = frame.naturalWidth * scale;
-        var drawHeight = frame.naturalHeight * scale;
+        var radius = Math.min(width, height) * 0.47;
         context.save();
         context.beginPath();
-        context.arc(width / 2, height / 2, Math.min(width, height) * 0.484, 0, Math.PI * 2);
+        context.arc(width / 2, height / 2, radius, 0, Math.PI * 2);
         context.clip();
-        context.translate(width, 0);
-        context.scale(-1, 1);
-        context.drawImage(frame, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+        context.fillStyle = getComputedStyle(root).getPropertyValue('--color-paper').trim();
+        context.fillRect(0, 0, width, height);
+        if (frame) {
+          var scale = Math.max(width / frame.canvas.width, height / frame.canvas.height);
+          var drawWidth = frame.canvas.width * scale;
+          var drawHeight = frame.canvas.height * scale;
+          context.translate(width, 0);
+          context.scale(-1, 1);
+          context.drawImage(frame.canvas, (width - drawWidth) / 2, (height - drawHeight) / 2, drawWidth, drawHeight);
+        }
         context.restore();
+
+        context.save();
+        context.beginPath();
+        context.arc(width / 2, height / 2, radius, 0, Math.PI * 2);
+        context.strokeStyle = getComputedStyle(root).getPropertyValue('--color-earth').trim();
+        context.globalAlpha = 0.38;
+        context.lineWidth = Math.max(width / 440, 1);
+        context.stroke();
+        context.restore();
+        if (!frame) return;
+
       }
 
       function loadFrame(index) {
@@ -271,9 +328,20 @@
         var scrollProgress = reduceMotion ? 0 : clamp((scrollY - heroRect.top) / Math.max(workRect.top - heroRect.top, 1), 0, 1);
         var heroProgress = reduceMotion ? 0 : clamp((scrollY - heroRect.top) / Math.max(heroRect.height, 1), 0, 1);
         var startSize = Math.min(originalRect.width, viewportWidth - 32);
-        var peakSize = Math.min(viewportWidth * 0.84, viewportHeight * 0.88, 860);
-        var keyframes = [
-          { at: 0, x: originalRect.left + startSize * 0.5, y: originalRect.top + startSize * 0.5, size: startSize, opacity: 0.9, rotateX: 2, rotateY: -7 },
+        var isMobile = viewportWidth <= 768;
+        var peakSize = isMobile
+          ? Math.min(viewportWidth * 0.92, viewportHeight * 0.58, 520)
+          : Math.min(viewportWidth * 0.84, viewportHeight * 0.88, 860);
+        var initialX = originalRect.left + startSize * 0.5;
+        var initialY = originalRect.top + startSize * 0.5 - scrollY;
+        var keyframes = isMobile ? [
+          { at: 0, x: initialX, y: initialY, size: startSize, opacity: 0.88, rotateX: 0, rotateY: -3 },
+          { at: 0.26, x: viewportWidth * 0.5, y: viewportHeight * 0.46, size: peakSize * 0.78, opacity: 0.54, rotateX: 2, rotateY: -1 },
+          { at: 0.47, x: viewportWidth * 0.5, y: viewportHeight * 0.48, size: peakSize, opacity: 0.34, rotateX: -1, rotateY: 0 },
+          { at: 0.7, x: viewportWidth * 0.5, y: viewportHeight * 0.48, size: peakSize * 0.9, opacity: 0.26, rotateX: 1, rotateY: 1 },
+          { at: 1, x: viewportWidth * 0.5, y: viewportHeight * 0.45, size: peakSize * 0.76, opacity: 0.18, rotateX: -1, rotateY: 2 }
+        ] : [
+          { at: 0, x: initialX, y: initialY, size: startSize, opacity: 0.9, rotateX: 2, rotateY: -7 },
           { at: 0.26, x: viewportWidth * 0.57, y: viewportHeight * 0.34, size: peakSize * 0.72, opacity: 0.8, rotateX: 5, rotateY: -3 },
           { at: 0.47, x: viewportWidth * 0.58, y: viewportHeight * 0.52, size: peakSize, opacity: 0.5, rotateX: -3, rotateY: 1 },
           { at: 0.7, x: viewportWidth * 0.56, y: viewportHeight * 0.48, size: peakSize * 0.9, opacity: 0.36, rotateX: 3, rotateY: 5 },
@@ -295,6 +363,7 @@
         visualLayer.style.transform = reduceMotion ? 'none' : 'perspective(1200px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
         visualLayer.style.setProperty('--visual-scroll-progress', scrollProgress);
         visualLayer.querySelector('.hero__orbit-label').style.opacity = String(1 - scrollProgress * 0.75);
+        updateCanvasSize();
 
         var frameStops = [
           { at: 0, frame: 1 },
@@ -338,17 +407,25 @@
           visualLayer.style.width = originalRect.width + 'px';
           visualLayer.style.height = originalRect.height + 'px';
         }
-        updateCanvasSize();
+        updateCanvasSize(true);
         updateScrollScene();
       }
 
       window.addEventListener('scroll', queueScrollUpdate, { passive: true });
       window.addEventListener('resize', resizeVisual);
+      var themeObserver = new MutationObserver(function () {
+        Object.keys(frameCache).forEach(function (index) {
+          var updatedFrame = processFrame(frameCache[index].source);
+          if (updatedFrame) frameCache[index].canvas = updatedFrame.canvas;
+        });
+        drawFrame(currentFrame);
+      });
+      themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
       if ('ResizeObserver' in window) {
         new ResizeObserver(resizeVisual).observe(placeholder);
       }
 
-      updateCanvasSize();
+      updateCanvasSize(true);
       updateScrollScene();
       window.setTimeout(function () {
         var firstFrameReady = !!frameCache[1];

@@ -293,7 +293,7 @@ h1, h2, h3, h4, .serif-display {
   height: 100%;
   display: block;
   pointer-events: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 .hero__orbit-label {
@@ -332,7 +332,7 @@ h1, h2, h3, h4, .serif-display {
 }
 
 #about {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--color-paper) 64%, transparent), color-mix(in srgb, var(--color-paper) 72%, transparent));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-paper) 52%, transparent), color-mix(in srgb, var(--color-paper) 68%, transparent));
 }
 
 .hero__content {
@@ -1051,6 +1051,9 @@ h1, h2, h3, h4, .serif-display {
     justify-self: center;
     width: min(100%, clamp(200px, 62vw, 280px));
   }
+  #about {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-paper) 68%, transparent), color-mix(in srgb, var(--color-paper) 82%, transparent));
+  }
   .nav-toggle { display: flex; }
   .nav {
     position: absolute;
@@ -1073,6 +1076,18 @@ h1, h2, h3, h4, .serif-display {
 }
 
 @media (max-width: 480px) {
+  .hero__footer-meta {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 24px 16px;
+  }
+  .hero__stat-item {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+  }
+  .hero__stat-label {
+    overflow-wrap: anywhere;
+  }
   .hero__cta-group {
     flex-wrap: wrap;
     gap: 12px;
@@ -1080,6 +1095,26 @@ h1, h2, h3, h4, .serif-display {
   .hero__cta-group .btn-editorial {
     padding: 15px 20px;
     font-size: 0.7rem;
+  }
+  #contact .contact-finale {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 96px 0;
+    gap: 40px;
+  }
+  #contact .contact-finale > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  #contact .contact-headline {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+  }
+  #contact .contact-link-item,
+  #contact .contact-link-item span,
+  #contact .contact-link-item a {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
 
