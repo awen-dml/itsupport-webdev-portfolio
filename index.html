@@ -7,6 +7,7 @@
 <title>Awen — Web Developer &amp; IT Support Specialist</title>
 <meta name="description" content="Portfolio profesional Awen, Web Developer (PHP/Laravel) & IT Support Specialist berbasis di Kendari, Indonesia. Membangun aplikasi web dan menjaga keandalan infrastruktur IT.">
 <link rel="canonical" href="https://awendev.online/">
+<link rel="icon" href="assets/img/awen.ico" type="image/x-icon">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -26,8 +27,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
   (function () {
@@ -99,10 +98,6 @@
      HERO
      ============================================================ -->
   <section class="hero" id="home" aria-labelledby="hero-title">
-    <div class="hero__3d-bg" aria-hidden="true">
-      <canvas id="hero-canvas"></canvas>
-    </div>
-
     <div class="hero__grid">
       <div class="hero__content reveal">
         <p class="hero__eyebrow">
@@ -119,6 +114,17 @@
           <a class="btn-editorial" href="#work">Lihat Proyek ↓</a>
           <a class="btn-editorial btn-editorial--outline" href="#contact">Hubungi Saya</a>
         </div>
+      </div>
+      <div class="hero__3d-bg" aria-hidden="true">
+        <canvas id="hero-canvas"></canvas>
+        <svg class="hero__orbit-label" viewBox="0 0 200 200">
+          <defs>
+            <path id="hero-orbit-path" d="M 100,100 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0"></path>
+          </defs>
+          <text>
+            <textPath href="#hero-orbit-path">AWENDEV · WEB DEVELOPER · IT SUPPORT · AWENDEV · WEB DEVELOPER · IT SUPPORT · </textPath>
+          </text>
+        </svg>
       </div>
     </div>
 

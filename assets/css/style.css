@@ -272,32 +272,67 @@ h1, h2, h3, h4, .serif-display {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  z-index: 2;
   overflow: hidden;
 }
 
 .hero__3d-bg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 70%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.7;
+  position: relative;
+  justify-self: end;
+  width: min(100%, clamp(280px, 32vw, 440px));
+  aspect-ratio: 1;
+  opacity: 0.9;
   pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.08), transparent 58%);
+  will-change: transform, opacity;
 }
 #hero-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   display: block;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.hero__orbit-label {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  animation: hero-orbit-spin 32s linear infinite;
+}
+.hero__orbit-label text {
+  fill: var(--color-earth);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 1.35px;
+}
+
+@keyframes hero-orbit-spin {
+  to { transform: rotate(360deg); }
 }
 
 .hero__grid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 64px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(24px, 4vw, 64px);
   align-items: center;
+}
+
+.hero__3d-placeholder {
+  width: min(100%, clamp(280px, 32vw, 440px));
+  aspect-ratio: 1;
+  justify-self: end;
+}
+
+#about {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-paper) 64%, transparent), color-mix(in srgb, var(--color-paper) 72%, transparent));
 }
 
 .hero__content {
@@ -452,6 +487,7 @@ h1, h2, h3, h4, .serif-display {
   max-width: var(--container);
   margin: 0 auto;
   position: relative;
+  z-index: 2;
   border-top: 1px solid rgba(108, 104, 99, 0.2);
 }
 
@@ -884,11 +920,99 @@ h1, h2, h3, h4, .serif-display {
 .js .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 800ms var(--transition-editorial), transform 800ms var(--transition-editorial);
+  transition: opacity var(--transition-editorial), transform var(--transition-editorial);
+}
+.js .section-editorial .reveal,
+.js .section-editorial .contact-finale {
+  will-change: opacity, transform, filter;
+}
+.js .section-editorial .section-header.reveal {
+  transform: translate3d(0, 42px, 0);
+  filter: blur(6px);
+  transition: opacity 700ms var(--transition-editorial), transform 900ms var(--transition-editorial), filter 700ms ease;
+}
+.js .section-editorial .about-portrait.reveal {
+  clip-path: inset(0 0 18% 0);
+  transform: translate3d(-28px, 24px, 0) scale(0.96);
+  transition: opacity 900ms var(--transition-editorial), transform 1100ms var(--transition-editorial), clip-path 1100ms var(--transition-editorial);
+}
+.js .section-editorial .discipline-card.reveal:nth-child(odd) {
+  transform: perspective(1000px) translate3d(-42px, 24px, 0) rotateY(-5deg);
+}
+.js .section-editorial .discipline-card.reveal:nth-child(even) {
+  transform: perspective(1000px) translate3d(42px, 24px, 0) rotateY(5deg);
+}
+.js .section-editorial .discipline-card.reveal {
+  transition: opacity 850ms var(--transition-editorial), transform 1000ms var(--transition-editorial);
+}
+.js .section-editorial .project-row.reveal {
+  transform: perspective(1200px) translate3d(0, 48px, -30px) scale(0.975);
+  filter: blur(7px);
+  transition: opacity 850ms var(--transition-editorial), transform 1100ms var(--transition-editorial), filter 850ms ease;
+}
+.js .section-editorial .case-card.reveal {
+  transform: perspective(1000px) translate3d(0, 36px, 0) rotateX(5deg);
+  filter: blur(5px);
+  transition: opacity 750ms var(--transition-editorial), transform 900ms var(--transition-editorial), filter 750ms ease;
+}
+.js .section-editorial .project-row.reveal:nth-child(2) {
+  transition-delay: 90ms;
+}
+.js .section-editorial .project-row.reveal:nth-child(3) {
+  transition-delay: 160ms;
+}
+.js .section-editorial .discipline-card.reveal:nth-child(2),
+.js .section-editorial .case-card.reveal:nth-child(2) {
+  transition-delay: 100ms;
+}
+.js .section-editorial .case-card.reveal:nth-child(3) {
+  transition-delay: 180ms;
+}
+.js .section-editorial .contact-finale {
+  opacity: 0;
+  transform: translate3d(0, 42px, 0) scale(0.98);
+  transition: opacity 900ms var(--transition-editorial), transform 1000ms var(--transition-editorial);
 }
 .js .reveal.is-visible {
   opacity: 1;
-  transform: none;
+  transform: perspective(1100px)
+    translate3d(0, var(--scroll-y, 0px), var(--scroll-z, 0px))
+    rotateX(var(--scroll-rotate, 0deg))
+    rotateY(var(--scroll-yaw, 0deg));
+  transition: opacity var(--transition-editorial), transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .section-editorial .section-header.reveal.is-visible {
+  filter: blur(0);
+}
+.js .section-editorial .about-portrait.reveal.is-visible {
+  clip-path: inset(0);
+}
+.js .section-editorial .project-row.reveal.is-visible,
+.js .section-editorial .case-card.reveal.is-visible {
+  filter: blur(0);
+}
+.js .section-editorial .discipline-card.reveal:nth-child(odd).is-visible,
+.js .section-editorial .discipline-card.reveal:nth-child(even).is-visible {
+  transition: opacity 850ms var(--transition-editorial), transform 1000ms var(--transition-editorial);
+}
+.js .section-editorial .project-row.reveal.is-visible,
+.js .section-editorial .case-card.reveal.is-visible {
+  transition: opacity 850ms var(--transition-editorial), transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .section-editorial .section-header.reveal.is-visible,
+.js .section-editorial .about-portrait.reveal.is-visible,
+.js .section-editorial .discipline-card.reveal:nth-child(odd).is-visible,
+.js .section-editorial .discipline-card.reveal:nth-child(even).is-visible,
+.js .section-editorial .project-row.reveal.is-visible,
+.js .section-editorial .case-card.reveal.is-visible {
+  transform: perspective(1100px)
+    translate3d(0, var(--scroll-y, 0px), var(--scroll-z, 0px))
+    rotateX(var(--scroll-rotate, 0deg))
+    rotateY(var(--scroll-yaw, 0deg));
+}
+.js .section-editorial .contact-finale.is-visible {
+  opacity: 1;
+  transform: perspective(1100px) translate3d(0, var(--scroll-y, 0px), var(--scroll-z, 0px));
 }
 
 @media (max-width: 1024px) {
@@ -896,12 +1020,37 @@ h1, h2, h3, h4, .serif-display {
     grid-template-columns: 1fr;
     gap: 48px;
   }
+  .hero__grid {
+    gap: 24px;
+  }
+  .hero__3d-bg {
+    justify-self: center;
+    width: min(100%, clamp(240px, 42vw, 360px));
+    opacity: 0.65;
+  }
+  .hero__3d-placeholder {
+    justify-self: center;
+    width: min(100%, clamp(240px, 42vw, 360px));
+  }
   .project-row:nth-child(even) .project-image-wrap { order: initial; }
   .project-row:nth-child(even) .project-info { order: initial; }
   .discipline-list { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
+  .hero__title {
+    font-size: clamp(2.2rem, 9.5vw, 4rem);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .hero__3d-bg {
+    width: min(100%, clamp(200px, 62vw, 280px));
+    opacity: 0.5;
+  }
+  .hero__3d-placeholder {
+    justify-self: center;
+    width: min(100%, clamp(200px, 62vw, 280px));
+  }
   .nav-toggle { display: flex; }
   .nav {
     position: absolute;
@@ -920,6 +1069,39 @@ h1, h2, h3, h4, .serif-display {
     padding: 32px;
     gap: 20px;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__cta-group {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hero__cta-group .btn-editorial {
+    padding: 15px 20px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js .reveal {
+    transition: none;
+  }
+  .js .reveal.is-visible {
+    transform: none;
+  }
+  .js .section-editorial .about-portrait.reveal {
+    clip-path: none;
+  }
+  .js .section-editorial .section-header.reveal,
+  .js .section-editorial .contact-finale {
+    filter: none;
+  }
+  .hero__orbit-label {
+    animation: none;
   }
 }
 
